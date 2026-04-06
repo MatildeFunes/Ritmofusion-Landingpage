@@ -3,135 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ritmofusión | Fitness Artístico en Club Regatas</title>
-    <!--Iconos-->
+    <title>Ritmofusión | Sport Dance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">RITMO<span>FUSIÓN</span></div>
-            
-            <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-            </div>
-
-            <ul class="nav-links">
-                <li><a href="#Concepto">Concepto</a></li>
-                <li><a href="#Clases">Clases</a></li>
-                <li><a href="#Galería">Galería</a></li>
-                <li><a href="#Profesor">Profesor</a></li>
+    <a href="#inicio" class="nav-logo-link">
+        <img src="LOGO RF inicial circulo blanco.png" alt="Logo RitmoFusión">
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <header class="navbar-container">
+        <nav class="floating-menu" id="nav-menu">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#ritmo">Más sobre Ritmo</a></li>
+                <li><a href="#adri">Sobre Adrián</a></li>
+                <li><a href="#experiencias">Experiencias en Argentina</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#tienda">Tienda</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <video autoplay muted loop playsinline poster="imagen-de-respaldo.jpg" class="hero-video">
-        <source src="Hero/Screen_Recording_20260201_133439_Facebook~3.mp4" type="video/mp4">
-        Tu navegador no soporta videos.
-            </video>
+        <section id="inicio" class="hero-full">
             <div class="hero-content">
-                <h1>DONDE EL ARTE SE ENCUENTRA CON EL MOVIMIENTO</h1>
-                <p>Clases descontracturadas para liberar tu ritmo. Sin estructuras, solo energía.</p>
-                <a href="#Concepto" class="btn-primary">CONOCE MÁS</a>
+                <h1>Transformando energías</h1>
+                <a href="https://wa.me/2616835411" class="btn-primary">Sumate a la experiencia</a>
             </div>
         </section>
 
-        <section id="Concepto" class="manifesto">
-            <div class="container">
-                <h2>MÁS QUE FITNESS</h2>
-                <p>En Ritmofusión no buscamos la coreografía perfecta. Buscamos que te desconectes del día y te conectes con el beat. Una fusión artística pensada para mover el cuerpo y liberar la mente.</p>
-            </div>
+        <section id="ritmo" class="info-section">
+    <div class="container ritmo-flex">
+        <div class="ritmo-text">
+            <h2 class="titulo-seccion">DESCUBRÍ LA <span>EXPERIENCIA</span></h2>
+            <p><strong>RITMOFUSIÓN</strong> es un entrenamiento cardio dinámico que combina música, movimiento y energía en una experiencia accesible para todos.</p>
+            <p>A través de diferentes ritmos y estilos, trabajás todo el cuerpo de forma integral, mejorando tu resistencia, coordinación y bienestar general.</p>
+            <p>Cada encuentro está diseñado como un recorrido energético. Comienza con una activación progresiva del cuerpo y evoluciona a través de diferentes momentos de intensidad,acompañados por la música.</p>
+            <p>No se trata de aprender coreografías, sino de dejarse guiar por el ritmo y el movimiento.</p>
+            <br>
+            <a href="https://wa.me/2616835411" class="btn-primary">Quiero sumarme</a>
+        </div>
+
+        <div class="ritmo-image">
+            <img src="Imagenes/FB_IMG_1769963245104.jpg" alt="Clase de Ritmofusión en acción">
+        </div>
+    </div>
         </section>
 
-        <section id="Clases" class="features">
-            <div class="grid-container">
-                <article class="card">
-                    <h3>CLUB REGATAS, SUBSEDE EL TORREÓN</h3>
-                    <ul>
-                        <li>Martes - 19h a 20h</li>
-                        <li>Sábado - 19h a 20h</li>
-                    </ul>
-                </article>
-                <article class="card">
-                    <h3>CLUB REGATAS, SEDE CENTRAL</h3>
-                    <ul>
-                        <li>Jueves - 19h a 20h</li>
-                        <li>Domingo - 11:30h a 12:30h</li>
-                    </ul>
-                </article>
+        <div class="marquee-container">
+            <div class="marquee">
+                <span>Fusión de culturas, ritmos y movimiento — Una experiencia que combina cuerpo, mente y energía — </span>
+                <span>Fusión de culturas, ritmos y movimiento — Una experiencia que combina cuerpo, mente y energía — </span>
             </div>
-        </section>
-        
-    <section id="Galería" class="galeria-section">
-        <div class="container">
-        <h2 class="titulo-seccion">EXPERIENCIA <span>RITMOFUSIÓN</span></h2>
-        
-        <div class="bento-grid">
-            <div class="bento-item grande">
-                <img src="Imagenes/FB_IMG_1769963245104.jpg" alt="Clase de Ritmofusión">
-                <div class="overlay-foto">Energía Total</div>
-            </div>
+        </div>
 
-            <div class="bento-item horizontal">
-                <img src="Imagenes/FB_IMG_1769963251006.jpg" alt="Movimiento Artístico">
-            </div>
-
-            <div class="bento-item horizontal">
-                <img src="Imagenes/FB_IMG_1769963257919.jpg" alt="Movimiento Artístico">
-            </div>
-
-            <div class="bento-item">
-                <img src="Imagenes/FB_IMG_1769963090064.jpg" alt="Club Regatas">
-                <div class="overlay-foto">Comunidad Regatas</div>
-            </div>
-
-            <div class="bento-item">
-                <img src="Imagenes/FB_IMG_1769963095802.jpg" alt="Club Regatas">
-                <div class="overlay-foto">Comunidad Regatas</div>
-            </div>
-
-            <div class="bento-item horizontal">
-                <img src="Imagenes/FB_IMG_1769963121595.jpg" alt="Grupo Regatas">
-                <div class="overlay-foto">Comunidad Regatas</div>
+        <section id="adri" class="parallax-section">
+    <div class="parallax-overlay">
+        <div class="container adri-content">
+            <span class="subtitulo-naranja">EL CREADOR</span>
+            <h2>MOVIMIENTO, ENERGÍA Y CONEXIÓN</h2>
+            <div class="adri-text">
+                <p><strong>Adrián "Adro" Sanchez</strong>, es el alma y creador de RitmoFusión. Lleva más de una década desarrollando experiencias que combinan movimiento,música y energía. </p>
+                <p>Su recorrido comenzó desde la pasión por el baile, pero con el tiempo evolucionó hacia algo más profundo: crear un espacio donde las personas no solo entrenen, sino que se conecten con su cuerpo, liberen tensiones y vivan el movimiento de una manera diferente.</p>
+                <p>Logró construir una comunidad sólida, convocando a cientos de personas en cada encuentro, manteniendo siempre una propuesta innovadora, dinámica y cercana.</p>
+                <p>Su diferencial está en la forma de guiar cada experiencia: no se trata solo de enseñar, sino de generar un clima, una energía y un vínculo real con quienes participan.</p>
             </div>
         </div>
     </div>
-    </section>
+</section>
 
-    <section id="Profesor" class="teacher-section">
-    <div class="teacher-container">
-        <div class="teacher-image">
-            <div class="background-text">RITMO</div>
-            <img src="Imagenes/FB_IMG_1769963054354.jpg" alt="Profesor de Ritmofusión">
+        <section id="experiencias" class="experiencias-section">
+    <div class="container">
+        <h2 class="titulo-seccion">EXPERIENCIAS EN <span>ARGENTINA</span></h2>
+        <p class="intro-seccion">Comunidad / Monitores</p>
+
+        <div class="experiencias-grid">
+            <div class="experiencia-card">
+                <div class="card-num">01</div>
+                <h3>CONECTÁ CON LA EXPERIENCIA</h3>
+                <p>Todo comienza viviendo Ritmo Fusión. Entrená, conectá con el movimiento y formá parte de una comunidad que transforma la energía a través del ritmo.</p>
+            </div>
+
+            <div class="experiencia-card destacado">
+                <div class="card-num">02</div>
+                <h3>FORMATE COMO MONITOR</h3>
+                <p>Aprendé la metodología y descubrí cómo llevar Ritmo Fusión a tu propia comunidad. Un sistema accesible, dinámico y preparado para ser replicado</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8bkiqF6G_XBFZKvdHvcqDjohUeBolXHKFxrSAB48N-RG3CA/viewform" class="btn-naranja">Próxima formación</a>
+            </div>
+
+            <div class="experiencia-card">
+                <div class="card-num">03</div>
+                <h3>LLEVÁ RITMOFUSIÓN A TU CIUDAD</h3>
+                <p>Convertite en monitor y empezá a crear tu propio espacio. Sumate a una red que sigue creciendo en distintas ciudades del país.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="monitores-section">
+    <div class="container">
+        <h2 class="titulo-seccion">NUESTROS <span>MONITORES</span></h2>
+    </div>
+
+    <div class="monitores-carousel">
+        <div class="monitores-track">
+            <div class="monitor-card">
+            <img src="Imagenes/Agustina Aliaga.JPEG" alt="Monitor">
+            <a href="https://instagram.com/usuario" target="_blank" class="overlay-foto">
+            <div class="monitor-datos">
+            <span class="ciudad">Mendoza</span>
+            <span class="ver-mas">Ver perfil</span>
+            </div>
+            </a>
+            </div>
+
+            <div class="monitor-card">
+            <img src="Imagenes/Matilde Funes.jpg" alt="Monitor">
+            <a href="https://instagram.com/usuario" target="_blank" class="overlay-foto">
+            <div class="monitor-datos">
+            <span class="ciudad">Mendoza</span>
+            <span class="ver-mas">Ver perfil</span>
+            </div>
+            </a>
+            </div>
+
+            <div class="monitor-card">
+            <img src="Imagenes/Valentina Vida.png" alt="Monitor">
+            <a href="https://instagram.com/usuario" target="_blank" class="overlay-foto">
+            <div class="monitor-datos">
+            <span class="ciudad">Mendoza</span>
+            <span class="ver-mas">Ver perfil</span>
+            </div>
+            </a>
+            </div>
+
+            <div class="monitor-card">
+            <img src="Imagenes/M4.jpg" alt="Monitor">
+            <a href="https://instagram.com/usuario" target="_blank" class="overlay-foto">
+            <div class="monitor-datos">
+            <span class="ciudad">Mendoza</span>
+            <span class="ver-mas">Ver perfil</span>
+            </div>
+            </a>
+            </div>
+
+            <div class="monitor-card">
+            <img src="Imagenes/Monitor hombre.jpg" alt="Monitor">
+            <a href="https://instagram.com/usuario" target="_blank" class="overlay-foto">
+            <div class="monitor-datos">
+            <span class="ciudad">Buenos Aires</span>
+            <span class="ver-mas">Ver perfil</span>
+            </div>
+            </a>
+            </div>
+
+            <div class="monitor-card">
+            <img src="Imagenes/Natatia Sanhueza.jpeg" alt="Monitor">
+            <a href="https://instagram.com/usuario" target="_blank" class="overlay-foto">
+            <div class="monitor-datos">
+            <span class="ciudad">Neuquén</span>
+            <span class="ver-mas">Ver perfil</span>
+            </div>
+            </a>
+            </div>
+            
+            <div class="monitor-card">
+            <img src="Imagenes/M6.jpg" alt="Monitor">
+            <a href="https://instagram.com/usuario" target="_blank" class="overlay-foto">
+            <div class="monitor-datos">
+            <span class="ciudad">Neuquén</span>
+            <span class="ver-mas">Ver perfil</span>
+            </div>
+            </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="crecimiento-ritmo">
+    <div class="container crecimiento-grid">
+        <div class="crecimiento-texto">
+            <h2>Hacé crecer tu experiencia de <span>RITMOFUSIÓN</span></h2>
+            <p>Llevá tu talento y tu pasión a otro nivel, sumate a la formación.</p>
         </div>
 
-        <div class="teacher-info">
-            <span class="tag">EL CREADOR</span>
-            <h2>ADRIÁN<span>SANCHEZ</span></h2>
-            <p class="bio"> 
-                Mi misión con <strong>Ritmofusión</strong> es romper las estructuras del fitness 
-                tradicional para que encuentres tu propio ritmo.
-            </p>
-            <div class="teacher-stats">
-                <div class="stat">
-                    <span class="number">+10</span>
-                    <span class="label">Años Exp.</span>
+        <div class="crecimiento-stats">
+            <div class="stat-item">
+                <span class="numero">+ 3.500.000</span>
+                <span class="etiqueta">encuentros dictados</span>
+            </div>
+            </div>
+    </div>
+</section>
+
+
+<section id="eventos" class="eventos-section-v2">
+    <div class="container eventos-wrapper">
+        
+        <h2 class="titulo-eventos-overlapped">EVENTOS</h2>
+
+        <div class="eventos-grid-v2">
+            <div class="eventos-image-block">
+                <img src="Imagenes/Fotoseccion5.jpg" alt="Evento Ritmofusión">
+            </div>
+
+            <div class="eventos-content-block">
+                <p class="subtitulo-naranja">Un ciclo de encuentros diseñados para vivir Ritmo Fusión desde otro lugar.</p>
+                
+                <div class="eventos-descripcion">
+                    <p>Los eventos de RitmoFusión son experiencias únicas, pensadas como encuentros intensivos.</p>
+                    <p>Son espacios donde todo se potencia: la intensidad, la conexión y la experiencia grupal. La experiencia se vuelve más profunda, más dinámica y más conectada.</p>
                 </div>
-                <div class="stat">
-                    <span class="number">100%</span>
-                    <span class="label">Energía</span>
+
+                <ul class="eventos-bullets">
+                    <li><span>–</span> Cupos limitados</li>
+                    <li><span>–</span> Formato intensivo</li>
+                    <li><span>–</span> Experiencia guiada de principio a fin</li>
+                </ul>
+
+                <p class="frase-final">Podés participar sin experiencia previa. Solo necesitás ganas de vivir algo distinto.</p>
+                
+                <div class="eventos-cta">
+                    <a href="https://www.eventbrite.com.ar" target="_blank" class="btn-primary">Quiero ir</a>
                 </div>
             </div>
         </div>
     </div>
-    </section>
+</section>
+
+<div class="eventos-gallery-slider">
+    <div class="gallery-track" id="galleryTrack">
+        
+        <div class="gallery-item">
+            <img src="Imagenes/evento2.JPG" alt="Clase">
+        </div>
+
+        <div class="gallery-item video-item">
+            <video autoplay loop muted playsinline>
+                <source src="Videos/videoguaymallen.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="gallery-item">
+            <img src="Imagenes/evento3.jpg" alt="Clase">
+        </div>
+
+        <div class="gallery-item video-item">
+            <video autoplay loop muted playsinline>
+                <source src="Videos/clase blanca - afro brasil - Trim.mp4" type="video/mp4">
+            </video>
+        </div>
+
+
+        <div class="gallery-item">
+            <img src="Imagenes/evento4.JPG" alt="Clase">
+        </div>
+
+        <div class="gallery-item video-item">
+            <video autoplay loop muted playsinline>
+                <source src="Videos/Siga el Baile RF benegas - Trim.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="gallery-item">
+            <img src="Imagenes/evento6.JPG" alt="Clase">
+        </div>
+
+        <div class="gallery-item">
+            <img src="Imagenes/evento7.JPG" alt="Clase">
+        </div>
+        
+        </div>
+</div>
+
+
+        <section id="tienda" class="tienda-section">
+    <div class="container">
+        <h2 class="titulo-seccion">QUIERO MI <span>REMERA</span></h2>
+        <p class="tienda-subtitulo">Llevá la energía de RitmoFusión con vos a todos lados.</p>
+
+    <div class="tienda-grid">
+            <div class="producto-card">
+                <div class="producto-img-container">
+                    <img src="Imagenes/NEGRAM.jpg" alt="Remera RitmoFusión Negra">
+                    <div class="badge-nuevo">Edición Ritmo</div>
+                </div>
+                <div class="producto-info">
+                    <h3>REMERA BABY TEE NEGRA</h3>
+                    <p>Mujer</p>
+                    <a href="https://forms.gle/Fsahgc5qGCaRsabJ9" target="_blank" class="btn-tienda">Pedir ahora</a>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <div class="producto-img-container">
+                    <img src="Imagenes/NEGRAM2.jpg" alt="Remera RitmoFusión Blanca">
+                    <div class="badge-nuevo">Edición Ritmo</div>
+                </div>
+                <div class="producto-info">
+                    <h3>REMERA NEGRA BÁSICA</h3>
+                    <p>Mujer</p>
+                    <a href="https://forms.gle/Fsahgc5qGCaRsabJ9" target="_blank" class="btn-tienda">Pedir ahora</a>
+                </div>
+            </div>
+        
+
+        <div class="producto-card">
+                <div class="producto-img-container">
+                    <img src="Imagenes/negraH.jpg" alt="Remera RitmoFusión Blanca">
+                    <div class="badge-nuevo">Edición Ritmo</div>
+                </div>
+                <div class="producto-info">
+                    <h3>REMERA NEGRA BÁSICA</h3>
+                    <p>Hombre</p>
+                    <a href="https://forms.gle/Fsahgc5qGCaRsabJ9" target="_blank" class="btn-tienda">Pedir ahora</a>
+                </div>
+        </div>
+
+        <div class="producto-card">
+                <div class="producto-img-container">
+                    <img src="Imagenes/BLANCAM.jpg" alt="Remera RitmoFusión Blanca">
+                    <div class="badge-nuevo">Edición Ritmo</div>
+                </div>
+                <div class="producto-info">
+                    <h3>REMERA CROP TOP BLANCA</h3>
+                    <p>Mujer</p>
+                    <a href="https://forms.gle/Fsahgc5qGCaRsabJ9" target="_blank" class="btn-tienda">Pedir ahora</a>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <div class="producto-img-container">
+                    <img src="Imagenes/blancahombre.jpg" alt="Remera RitmoFusión Blanca">
+                    <div class="badge-nuevo">Edición Ritmo</div>
+                </div>
+                <div class="producto-info">
+                    <h3>REMERA BLANCA BÁSICA</h3>
+                    <p>Hombre</p>
+                    <a href="https://forms.gle/Fsahgc5qGCaRsabJ9" target="_blank" class="btn-tienda">Pedir ahora</a>
+                </div>
+            </div>
+    </div>
+        <div class="tienda-footer">
+            <p>¿Tenés dudas sobre los talles o envíos? <a href="#contacto">Consultanos aquí</a></p>
+        </div>
+    </div>
+</section>
+
+    
+        <section id="contacto" class="seccion-contacto">
+    <div class="contenedor-contacto container">
+        
+        <div class="contacto-col-texto">
+            <h2 class="lema-final">VIVÍ <span>→</span> FORMATE <span>→</span> EXPANDÍ</h2>
+            <div class="separador-naranja"></div>
+            <p class="contacto-sub-word">¿Estás listo para transformar tu energía? Dejanos tu mensaje y sumate a la comunidad.</p>
+        </div>
+
+        <div class="contacto-col-form">
+            <form action="https://formspree.io/f/xjgpwqjw" method="POST" class="ritmo-form-style">
+                
+                <div class="form-group">
+                    <label for="nombre">NOMBRE*</label>
+                    <input type="text" name="nombre_completo" id="nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">MAIL*</label>
+                    <input type="email" name="email_contacto" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">TELEFONO</label>
+                    <input type="tel" name="telefono_contacto" id="telefono">
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">MENSAJE</label>
+                    <textarea name="mensaje_consulta" id="mensaje" rows="5" required></textarea>
+                </div>
+
+                <div class="form-btn-container">
+                    <button type="submit" class="btn-enviar">Enviar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
 </main>
 
     <footer>

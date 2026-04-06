@@ -1,473 +1,1107 @@
-/* Variables color */
 :root {
-    --negro-fondo: #121212;
-    --negro-suave: #1e1e1e;
-    --naranja-principal: #ff6b00; 
-    --blanco-off: #e0e0e0;
-    --fuente-titulos: 'Montserrat', sans-serif;
-    --fuente-cuerpo: 'Roboto', sans-serif;
+    --negro: #000000;
+    --blanco: #ffffff;
+    --naranja: #ff6b00;
+    --gris-oscuro: #1a1a1a;
 }
 
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /*  */
 }
 
 body {
-    background-color: var(--negro-fondo);
-    color: var(--blanco-off);
-    font-family: var(--fuente-cuerpo);
-    line-height: 1.6;
-    overflow-x: hidden;
+    background-color: var(--negro); /*  */
+    color: var(--blanco); /*  */
 }
 
-/* --- Header & Nav --- */
-header {
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 1.5rem 5%;
+
+/* LOGO*/
+.nav-logo-link {
     position: fixed;
-    width: 100%;
-    top: 0;
+    left: 55px;
     z-index: 1000;
-    border-bottom: 2px solid var(--naranja-principal);
+    transition: opacity 0.4s ease, filter 0.4s ease, transform 0.3s ease; /*transición suave*/
+    opacity: 1; 
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/*clase que el js la pone sola*/
+.nav-logo-link.scrolled {
+    opacity: 0.2; 
+    filter: drop-shadow(0 0px 0px rgba(0,0,0,0)); 
+    pointer-events: none;
 }
 
-.logo {
-    font-family: var(--fuente-titulos);
-    font-size: 1.8rem;
-    font-weight: 900;
-    letter-spacing: -1px;
+.nav-logo-link.scrolled:hover {
+    opacity: 1;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    pointer-events: auto; /* Reactivamos el clic */
+    transform: scale(1.05); 
 }
 
-.logo span {
-    color: var(--naranja-principal);
+.nav-logo-link img {
+    height: 180px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-.nav-links {
+/* MENÚ FLOTANTE CENTRAL [cite: 4, 11] */
+.navbar-container {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: auto;
+}
+
+
+.floating-menu {
+    background: var(--negro);
+    padding: 10px 30px;
+    border-radius: 50px;
+}
+
+.floating-menu ul {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 20px;
 }
 
-.nav-links a {
+.floating-menu a {
     text-decoration: none;
-    color: var(--blanco-off);
-    font-weight: bold;
+    color: var(--blanco);
+    font-weight: 700;
+    font-size: 0.9rem;
     transition: color 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--naranja-principal);
+.floating-menu a:hover {
+    color: var(--naranja); }
+
+
+.navbar-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Evita que el usuario haga clic sin querer */
+    transform: translate(-50%, -20px); 
+    transition: all 0.4s ease; /* desaparece suavemente */
 }
 
-/* --- Media Query para Móviles --- */
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        right: -100%; /* Escondido a la derecha */
-        top: 70px;
-        flex-direction: column;
-        background-color: var(--negro-fondo);
-        width: 100%;
-        height: 100vh;
-        text-align: center;
-        transition: 0.3s;
-        gap: 2rem;
-        padding-top: 50px;
-        border-top: 1px solid var(--naranja-principal);
-    }
-
-    /* Cuando el menú tenga la clase 'active', se desliza hacia adentro */
-    .nav-links.active {
-        right: 0;
-    }
-
-    /* Estilos de las rayitas (Hamburguesa) */
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-    }
-
-    .bar {
-        display: block;
-        width: 25px;
-        height: 3px;
-        margin: 5px auto;
-        transition: all 0.3s ease-in-out;
-        background-color: var(--blanco-off);
-    }
-
-    /* Animación de las rayitas a una "X" cuando está activo */
-    #mobile-menu.is-active .bar:nth-child(2) { opacity: 0; }
-    #mobile-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    #mobile-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-}
-
-/* Esconder el botón en escritorio */
-@media (min-width: 769px) {
-    .menu-toggle { display: none; }
-}
-
-/* --- Hero Section --- */
-.hero {
-    position: relative; /* Para posicionar el video y el overlay adentro */
-    height: 100vh;
+/* HERO SECTION  */
+.hero-full {
+    height: 100vh; /* Ocupa toda la pantalla vertical */
     width: 100%;
-    overflow: hidden;
+    
+    /* LA SOLUCIÓN: Degradado negro + Imagen de fondo */
+    background-image: 
+        linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%), 
+        url(Imagenes/fotohero.jpg); 
+    
+    background-size: cover;      /* La imagen llena todo el espacio sin estirarse */
+    background-position: center;  /* La imagen se centra */
+    background-repeat: no-repeat;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-}
-
-.hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Para que no se deforme */
-    z-index: -2;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Capa negra traslúcida */
-    z-index: -1;
-}
-
-.hero-content {
-    z-index: 1; /* Asegura que el texto esté por encima de todo */
     text-align: center;
+    position: relative;
+    z-index: 1; /* Asegura que esté por debajo del menú flotante */
 }
 
-.hero h1 {
-    font-family: var(--fuente-titulos);
-    font-size: clamp(2.5rem, 8vw, 5rem); /* Tipografía fluida */
-    line-height: 1;
-    margin-bottom: 1rem;
+.hero-content h1 {
+    font-size: 4rem;
     text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
+/* BOTONES [cite: 1, 13] */
+
+.hero-content .btn-primary{
+    background-color: var(--negro);
+    color: var(--blanco);
+}
 .btn-primary {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color: var(--naranja-principal);
-    color: white;
+    background-color: var(--blanco);
+    color: var(--negro);
+    padding: 15px 30px;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 2rem;
-    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 50px;
+    font-weight: 900;
+    transition: all 0.3s;
 }
 
 .btn-primary:hover {
-    transform: scale(1.05);
-    background-color: #e66000;
+    background-color: var(--naranja); /*  */
+    color: var(--blanco);
 }
 
-/* --- Manifiesto (Flexbox) --- */
-.manifesto {
-    padding: 100px 10%;
-    text-align: center;
-    background-color: var(--negro-suave);
+/* Estructura de la sección Más sobre Ritmo */
+.info-section {
+    padding: 100px 5%;
+    background-color: var(--negro);
+    overflow: hidden; /* Evita que la forma de la imagen desborde el sitio */
 }
 
-.manifesto h2 {
-    color: var(--naranja-principal);
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-/* --- Clases (CSS Grid) --- */
-.features {
-    padding: 80px 5%;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.card {
-    background-color: var(--negro-suave);
-    padding: 3rem 2rem;
-    border-left: 5px solid var(--naranja-principal);
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-.card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
-/*Galería Ritmo*/
-.galeria-section {
-    padding: 80px 5%;
-    background-color: var(--negro-fondo);
-}
-
-.titulo-seccion {
-    text-align: center;
-    font-family: var(--fuente-titulos);
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-}
-
-.titulo-seccion span {
-    color: var(--naranja-principal);
-}
-
-/* Estructura Bento Grid */
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
-    grid-auto-rows: 250px; /* Altura base de las filas */
-    gap: 15px;
+.ritmo-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px; /* Aumentamos el espacio entre columnas */
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.bento-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    background-color: var(--negro-suave);
-}
-
-.bento-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease, filter 0.5s ease;
-    filter: grayscale(30%); /* Un toque artístico sutil */
-}
-
-/* Definición de tamaños especiales */
-.bento-item.grande {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.bento-item.vertical {
-    grid-row: span 2;
-}
-
-.bento-item.horizontal {
-    grid-column: span 2;
-}
-
-/* Efectos Hover */
-.bento-item:hover img {
-    transform: scale(1.1);
-    filter: grayscale(0%);
-}
-
-.overlay-foto {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: var(--naranja-principal);
-    font-weight: bold;
-    font-family: var(--fuente-titulos);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.bento-item:hover .overlay-foto {
-    opacity: 1;
-}
-
-/* Responsive: En tablets y móviles el grid cambia */
-@media (max-width: 992px) {
-    .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .bento-grid {
-        display: flex; /* Cambiamos de Grid a Flex para el carrusel */
-        flex-wrap: nowrap; /* Obligamos a que todo vaya en una sola línea */
-        overflow-x: auto; /* Habilitamos el scroll horizontal */
-        scroll-snap-type: x mandatory; /* Las fotos encajan al deslizar */
-        gap: 12px;
-        padding: 10px 0 20px 0;
-        -webkit-overflow-scrolling: touch; /* Scroll suave */
-        scrollbar-width: none; /* Escondemos la barra en Firefox */
-    }
-
-    /* Escondemos la barra de scroll en Chrome/Safari para que se vea más limpio */
-    .bento-grid::-webkit-scrollbar {
-        display: none;
-    }
-
-    .bento-item {
-        flex: 0 0 85%; /* Cada foto ocupa el 85% del ancho, así se ve un pedacito de la siguiente */
-        height: 400px;
-        scroll-snap-align: center; /* La foto se centra automáticamente */
-        border-radius: 15px;
-    }
-
-    /* Forzamos a que todas las fotos tengan el mismo tamaño en móvil */
-    .bento-item.grande, 
-    .bento-item.vertical, 
-    .bento-item.horizontal {
-        grid-column: auto;
-        grid-row: auto;
-        flex: 0 0 85%;
-        height: 400px;
-    }
-
-    /*Sombra a la derecha*/
-    .galeria-section {
-        position: relative;
-    }
-}
-
-
-.teacher-section {
-    padding: 100px 5%;
-    background-color: var(--negro-suave);
-    overflow: hidden;
-}
-
-.teacher-container {
-    max-width: 1100px;
-    margin: 0 auto;
+.ritmo-text {
+    flex: 1.2;
     display: flex;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap; /* Para que sea responsive */
+    flex-direction: column;
+    /* EVITA QUE LOS HIJOS SE ESTIREN AL ANCHO TOTAL */
+    align-items: flex-start;
 }
 
-/* Contenedor de la Imagen con Texto de Fondo */
-.teacher-image {
-    flex: 1;
-    min-width: 300px;
-    position: relative;
+.ritmo-parrafos {
+    margin-bottom: 40px; /* Espacio de seguridad antes del botón */
+}
+
+.ritmo-parrafos p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.ritmo-cta {
+    margin-top: 10px;
+}
+
+/* --- LA IMAGEN CON FORMA --- */
+.ritmo-image {
+    flex: 0.8; 
     display: flex;
     justify-content: center;
 }
 
-.teacher-image img {
+.ritmo-image img {
     width: 100%;
-    max-width: 400px;
-    border-radius: 20px;
-    position: relative;
-    z-index: 2;
-    border-bottom: 8px solid var(--naranja-principal);
+    height: auto;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
+    
+    /* PATH PERSONALIZADO */
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+    
+    transition: transform 0.3s ease;
 }
 
-.background-text {
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--fuente-titulos);
-    font-size: 12rem;
+.ritmo-image img:hover {
+    transform: scale(1.02); 
+}
+
+
+/* Títulos con el toque naranja */
+.titulo-seccion {
+    font-size: 2.5rem;
     font-weight: 900;
-    z-index: 1;
-    /* Efecto de solo borde (Stroke) */
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(255, 107, 0, 0.2); 
-    letter-spacing: 10px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
 }
 
-/* Información del Profesor */
-.teacher-info {
-    flex: 1;
-    min-width: 300px;
+.titulo-seccion span {
+    color: var(--naranja);
 }
 
-.tag {
-    color: var(--naranja-principal);
-    font-weight: bold;
-    letter-spacing: 2px;
+
+/* TEXTO ANIMADO (Marquee) [cite: 26] */
+.marquee-container {
+    overflow: hidden;
+    background: var(--negro);
+    padding: 20px 0;
+    white-space: nowrap;
+    border-top: 1px solid #333;
+}
+
+.marquee {
+    display: inline-block;
+    animation: scrollText 20s linear infinite;
+}
+
+@keyframes scrollText {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.marquee span {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-right: 50px;
+}
+
+/* --- SECCIÓN SOBRE ADRIÁN --- */
+.parallax-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    
+    background-image: url(Imagenes/FB_IMG_1769963054354.jpg); 
+    background-attachment: fixed; /* Mantiene el efecto */
+    
+    /* LAS SOLUCIONES TÉCNICAS: */
+    background-size: cover;      /* Forza a la imagen a cubrir todo el contenedor */
+    background-position: center top; 
+    overflow: hidden;
+}
+
+.parallax-overlay {
+    min-height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column; /* Cambiamos a columna para controlar el flujo */
+    justify-content: flex-start; /* Alineamos arriba */
+    padding-top: 15vh; /* EMPUJA EL TÍTULO HACIA ABAJO */
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.adri-content {
+    max-width: 800px;
+    /* Animación sutil para que el texto aparezca con clase */
+    animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.subtitulo-naranja {
+    color: var(--naranja);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     font-size: 0.9rem;
-}
-
-.teacher-info h2 {
-    font-family: var(--fuente-titulos);
-    font-size: 3rem;
-    margin: 10px 0 20px;
-    line-height: 1;
-}
-
-.teacher-info h2 span {
-    color: var(--naranja-principal);
     display: block;
+    margin-bottom: 10px;
 }
 
-.bio {
-    font-size: 1.1rem;
-    color: var(--blanco-off);
+.adri-content h2 {
+    font-size: clamp(2rem, 5vw, 4rem); /* Tamaño fluido según la pantalla */
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: var(--blanco);
+}
+
+.adri-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Estilo de botón contorneado para variar del sólido */
+.btn-outline {
+    display: inline-block;
+    padding: 15px 35px;
+    border: 2px solid var(--blanco);
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    border-color: var(--naranja);
+    color: var(--naranja);
+    transform: translateY(-3px);
+}
+
+/*  SECCIÓN 04: EXPERIENCIAS  */
+.experiencias-section {
+    position: relative;
+    z-index: 10; /* Asegura que esté por encima del fondo fijo de Adrián */
+    background-color: var(--negro); /* Fondo sólido para tapar el parallax */
+    padding: 100px 5%;
+}
+
+.intro-seccion {
+    color: var(--naranja);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.experiencias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.experiencia-card {
+    background-color: #0a0a0a;
+    padding: 50px 40px;
+    border: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*transition: all 0.4s ease;*/
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), /* Un ease-out pro */
+                border-color 0.3s ease, 
+                background-color 0.3s ease,
+                box-shadow 0.4s ease;
+    /* Preparamos el z-index para que al agrandarse no quede debajo de otras */
+    position: relative;
+    z-index: 1;
+}
+
+/*Hover*/
+.experiencia-card:hover {
+    background-color: #111; /* Se aclara un penique */
+    border-color: var(--naranja); /* Borde naranja */
+    
+    /* APLICAMOS EL ZOOM */
+    transform: scale(1.03) translateY(-5px); /* Sube un poquito y se agranda */
+    
+    /* Agregamos una sombra difusa para dar profundidad */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    
+    /* Nos aseguramos de que esté por encima de las tarjetas vecinas */
+    z-index: 5; 
+}
+
+/* El bloque central resaltado*/
+.experiencia-card.destacado {
+    border: 1px solid var(--naranja);
+    background-color:#0d0d0d;
+    transform: translateY(-10px); 
+}
+
+.experiencia-card.destacado:hover {
+    transform: scale(1.03) translateY(-15px); /* Mantiene la elevación extra */
+    box-shadow: 0 20px 50px rgba(255, 107, 0, 0.2); /* Sombra con tinte naranja */
+}
+
+.card-num {
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+}
+
+.experiencia-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.experiencia-card p {
+    color: #888;
+    line-height: 1.6;
     margin-bottom: 30px;
 }
 
-/* Stats */
-.teacher-stats {
-    display: flex;
-    gap: 40px;
+/* Botones de las cards */
+.btn-naranja {
+    background-color: var(--naranja);
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
 }
 
-.stat {
+.btn-text {
+    color: var(--naranja);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+
+/* SECCIÓN MONITORES */
+.monitores-section .container {
+    padding: 0 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--negro);
+    overflow: hidden;
+}
+
+/*.subtitulo-monitores {
+    text-align: center;
+    color: #888;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}*/
+
+.monitores-carousel {
+    width: 100%;
+    overflow: hidden;
+    padding: 50px 0;
+    cursor: grab;
+}
+
+.monitores-track {
+    display: flex;
+    width: max-content;
+    animation: scrollCarousel 30s linear infinite;
+}
+
+/* Pausar el carrusel al pasar el mouse */
+.monitores-track:hover {
+    animation-play-state: paused;
+}
+
+.monitor-card {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    margin: 0 10px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.monitor-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+    -webkit-filter: none;
+    transition: 0.6s ease;
+}
+
+/* EL OVERLAY (La capa que contiene el texto) */
+.overlay-foto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Degradado negro solo abajo para que el texto blanco resalte */
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end; /* Alinea al fondo */
+    justify-content: flex-start; /* Alinea a la izquierda */
+    padding: 25px;
+    text-decoration: none;
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.5s ease;
+    z-index: 10;
+}
+
+.monitor-datos {
+    color: white;
+    text-align: left;
+}
+
+.ciudad {
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+/*Icono de instagram*/
+.fa-instagram {
+    font-size: 1.2rem;
+    color: var(--blanco);
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.ver-mas {
+    display: block;
+    font-size: 0.75rem;
+    color: #ccc; /* Detalle gris*/
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* EFECTOS HOVER */
+.monitor-card:hover img {
+    transform: scale(1.05);
+}
+
+.monitor-card:hover .overlay-foto {
+    opacity: 1; /* Aparece la ciudad y el link al pasar el mouse */
+}
+
+/* ANIMACIÓN */
+@keyframes scrollCarousel {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Se desplaza la mitad del track */
+}
+
+/*BLOQUE FINAL SECCIÓN 4 */
+.crecimiento-ritmo {
+    background-color: var(--negro); /*  */
+    padding: 100px 5%;
+    border-top: 1px solid #1a1a1a;
+}
+
+.crecimiento-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /*  */
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.crecimiento-texto h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /*  */
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--blanco);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.crecimiento-texto h2 span {
+    color: var(--naranja); /*  */
+}
+
+.crecimiento-texto p {
+    font-size: 1.2rem;
+    color: #888;
+    max-width: 500px;
+}
+
+/* Columna de Números */
+.crecimiento-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stat-item {
     display: flex;
     flex-direction: column;
 }
 
-.number {
-    font-family: var(--fuente-titulos);
-    font-size: 2rem;
-    color: var(--naranja-principal);
-    font-weight: bold;
+.numero {
+    font-size: clamp(4rem, 8vw, 6rem); /*  */
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.2); /* Color grisáceo sutil como la foto */
+    line-height: 1;
+    letter-spacing: -2px;
 }
 
-.label {
-    font-size: 0.8rem;
+.etiqueta {
+    font-size: 1rem;
     text-transform: uppercase;
-    color: #888;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--blanco);
+    margin-top: 10px;
 }
 
-/* Responsive para celulares */
-@media (max-width: 768px) {
-    .teacher-container {
-        flex-direction: column;
-        text-align: center;
+
+/*Seccion 5 - EVENTOS*/
+.eventos-section-v2 {
+    background-color: var(--negro); /* Fondo negro sólido */
+    padding: 120px 0; /* Espaciado vertical para la superposición */
+    width: 100%;
+    position: relative; /* Clave para el z-index del título */
+}
+
+.eventos-wrapper {
+    max-width: 1300px; /* Ancho máximo para el contenedor centrado */
+    margin: 0 auto;
+    padding: 0 5%; /* Esto crea el margen izquierdo y derecho general */
+    position: relative; /* Clave para posicionar el título absolute */
+}
+
+/* TÍTULO SUPERPUESTO */
+.titulo-eventos-overlapped {
+    position:absolute;
+    top: -60px; /* Sube el título para que se superponga */
+    font-size: clamp(2rem, 8vw, 5rem); /* Tamaño gigante fluido */
+    font-weight: 700;
+    color: var(--blanco);
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    z-index: 10; /* Lo pone por encima de la imagen */
+    line-height: 0.9;
+}
+
+/* Grid de dos columnas */
+.eventos-grid-v2 {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr; /* La columna de la foto un poco más ancha */
+    gap: 60px; /* Espacio entre foto y texto */
+    align-items: center; /* Centra verticalmente el texto con la foto */
+}
+
+/* 2. IMAGEN (No toca el borde izquierdo porque está dentro del container con padding) */
+.eventos-image-block {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 5; /* Por debajo del título */
+}
+
+.eventos-image-block img {
+    width: 100%;
+    /*height: 100%;*/
+    height: 500px;
+    object-fit: cover; /* La foto llena el espacio sin deformarse */
+    background-color: #111;
+    /*Forma img*/
+    clip-path: polygon(83% 0, 100% 50%, 83% 100%, 0% 100%, 25% 50%, 0% 0%);
+    /*clip-path: circle(50% at 50% 50%);*/
+    /*border-radius: 4px; /* Un toque de suavidad elegante */
+    -webkit-clip-path: polygon(83% 0, 100% 50%, 83% 100%, 0% 100%, 25% 50%, 0% 0%);
+    transition: transform 0.3s ease; /* Pequeño efecto al pasar el mouse */
+}
+
+/* Bloque del Texto */
+.eventos-content-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left; /* Títulos y textos a la izquierda */
+}
+
+.subtitulo-naranja {
+    color: var(--naranja);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.eventos-descripcion p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+.eventos-bullets {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.eventos-bullets li {
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--blanco);
+}
+
+.eventos-bullets span {
+    color: var(--naranja);
+    margin-right: 10px;
+}
+
+.frase-final {
+    margin-bottom: 40px;
+    font-style: italic;
+    color: #eee;
+    font-size: 1.1rem;
+}
+
+/* 3. BOTÓN (No alargado, tamaño normal) */
+.eventos-cta {
+    display: flex;
+    justify-content: flex-start; /* Alinea el botón a la izquierda */
+}
+
+/* El estilo del .btn-primary ya lo definimos antes, 
+   pero asegurate que tenga padding y width: auto; */
+
+
+
+/* --- SLIDER DE GALERÍA DE EVENTOS --- */
+.eventos-gallery-slider {
+    width: 100%;
+    overflow: hidden; /* Oculta lo que sale de la pantalla */
+    background-color: #000;
+    padding: 30px 0; /* Espaciado opcional */
+    position: relative;
+}
+
+.gallery-track {
+    display: flex;
+    width: max-content; /* Se ajusta automáticamente al contenido clonado */
+    animation: scrollGallery 40s linear infinite; /* Movimiento constante y lento */
+}
+
+/* Pausar al pasar el mouse (UX Pro) */
+.eventos-gallery-slider:hover .gallery-track {
+    animation-play-state: paused;
+}
+
+.gallery-item {
+    /* Definimos el tamaño de cada "diapositiva" */
+    width: 450px; /* Ancho de cada foto/video */
+    height: 300px; /* Altura fija */
+    margin: 0 10px; /* Espaciado entre items */
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 4px; /* Bordes suaves opcionales */
+}
+
+/* Estilo para Fotos */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Llena el espacio sin deformar */
+    transition: transform 0.5s ease;
+}
+
+/* Estilo para Videos */
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Efecto hover opcional */
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ANIMACIÓN CSS */
+@keyframes scrollGallery {
+    0% {
+        transform: translateX(0);
     }
-    .background-text {
-        font-size: 8rem;
-    }
-    .teacher-stats {
-        justify-content: center;
+    100% {
+        /* Se desplaza exactamente la mitad del track (las originales) */
+        transform: translateX(-50%);
     }
 }
+
+
+/* 06 SECCIÓN TIENDA - RITMOFUSIÓN*/
+
+.tienda-section {
+    padding: 100px 5%;
+    background-color: var(--negro);
+    border-top: 1px solid #1a1a1a;
+    position: relative;
+    overflow: hidden;
+}
+
+.tienda-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tienda-subtitulo {
+    text-align: center;
+    color: #888;
+    margin-top: -10px;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+/* TIENDA GRID */
+.tienda-grid {
+    display: grid;
+    /* Crea columnas de mínimo 280px. Si no entran, las pasa abajo automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 40px 30px; /* 40px de espacio entre filas, 30px entre columnas */
+    margin-bottom: 60px;
+}
+
+/* LA TARJETA DEL PRODUCTO */
+.producto-card {
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Obliga a todas las cards a medir lo mismo en la misma fila */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+    border-color: var(--naranja);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* IMAGEN */
+.producto-img-container {
+    width: 100%;
+    height: 380px; /* Altura fija para que todas las fotos se vean iguales */
+    overflow: hidden;
+    position: relative;
+    background-color: #1a1a1a;
+}
+
+.producto-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la foto para llenar el espacio sin estirarse */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.producto-card:hover .producto-img-container img {
+    transform: scale(1.1); /* Efecto zoom al pasar el mouse */
+}
+
+/* Badge pequeño */
+.badge-nuevo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--negro);
+    color: white;
+    padding: 5px 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 2px;
+}
+
+/* --- BLOQUE DE INFORMACIÓN --- */
+.producto-info {
+    padding: 25px;
+    flex-grow: 1; /* Empuja el botón hacia abajo para que todos queden alineados */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.producto-info h3 {
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    color: var(--blanco);
+    text-transform: uppercase;
+}
+
+.producto-info p {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* --- BOTÓN DE PEDIDO (TAMAÑO CÁPSULA) --- */
+.btn-tienda {
+    display: inline-block;
+    align-self: center; /* Evita que el botón se estire al ancho total */
+    padding: 12px 30px;
+    border: 2px solid var(--naranja);
+    color: var(--naranja);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-tienda:hover {
+    background-color: var(--naranja);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+}
+
+/* Footer de la tienda */
+.tienda-footer {
+    text-align: center;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 40px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.tienda-footer a {
+    color: var(--naranja);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+
+/* 
+07 SECCIÓN CONTACTO
+ */
+
+/* Fondo negro sólido y padding vertical para que respire */
+.seccion-contacto {
+    background-color: var(--negro); 
+    padding: 120px 0;
+    width: 100%;
+    color: var(--blanco);
+    border-top: 1px solid #1a1a1a;
+}
+
+/* El Grid que separa texto e imagen */
+.contenedor-contacto {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr; /* Columna de form un poco más ancha */
+    gap: 80px;
+    align-items: flex-start; /* Alinea los bloques arriba */
+}
+
+/* --- COLUMNA DE TEXTO (Izquierda) --- */
+.contacto-col-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left; 
+}
+
+.lema-final {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Título grande */
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    color: var(--blanco);
+}
+
+.lema-final span {
+    color: var(--naranja); /* Detalle naranja */
+}
+
+/* Línea separadora naranja*/
+.separador-naranja {
+    width: 150px;
+    height: 4px;
+    background-color: var(--naranja);
+    margin: 20px 0 30px 0; /* Margen superior/inferior */
+}
+
+.contacto-sub-word {
+    font-size: 1.1rem;
+    color: #888;
+    line-height: 1.6;
+    max-width: 450px;
+}
+
+/* --- COLUMNA DE FORMULARIO (Derecha) --- */
+.ritmo-form-style {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio uniforme entre campos */
+}
+
+/* El grupo que une etiqueta y input */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Etiqueta arriba, gris, bold y uppercase */
+.form-group label {
+    font-size: 0.7rem;
+    color: #ccc; /* Gris claro */
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 8px; /* Espacio con el input */
+    letter-spacing: 1px;
+}
+
+/* Input negro suave y redondeado */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background-color: #0c0c0c; /* Negro suave de la foto */
+    border: 1px solid #1a1a1a; /* Borde sutil */
+    color: var(--blanco);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    border-radius: 50px; 
+    transition: all 0.3s ease;
+}
+
+/* El textarea es redondeado en los bordes, no cápsula */
+.form-group textarea {
+    border-radius: 12px;
+    resize: none; /* Evita que el usuario lo deforme */
+}
+
+/* El select también es redondeado */
+.form-group select {
+    appearance: none; /* Quita el estilo por defecto del navegador */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ccc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 15px;
+}
+
+/* Efecto hover/focus en los campos */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--naranja);
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+}
+
+/* EL BOTÓN ENVIAR  */
+.form-btn-container {
+    display: flex;
+    justify-content: flex-start; /* Alineado a la izquierda */
+    margin-top: 10px;
+}
+
+.btn-enviar {
+    background-color:var(--blanco); 
+    color: var(--negro);
+    padding: 14px 50px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    border-radius: 50px; /* Cápsula total */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: var(--naranja);
+    color: var(--blanco);
+    transform: translateY(-2px);
+}
+
+
 
 /* --- Footer --- */
 footer {
     padding: 2rem 1rem;
-    border-top: 2px solid var(--naranja-principal);
+    border-top: 2px solid var(--naranja);
 }
 
 .contenido{
@@ -489,4 +1123,300 @@ footer {
 
 .footer-content a:hover {
     transform: scale(1.1);
+}
+
+/*RESPONSIVE — MOBILE (max 768px)*/
+
+/* Botón hamburguesa — oculto en desktop */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    background: var(--negro);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 14px;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+.menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--blanco);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    /*HERO Y MENU*/
+    .hero-full {
+        background-image: 
+            linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%),
+            url(Imagenes/Herovertical.jpg); 
+        background-position: center top; /* opcional: ajusta desde arriba */
+    }
+
+    /* Logo: más chico y centrado */
+    .nav-logo-link {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 16px;
+    }
+    .nav-logo-link img {
+        height: 90px;
+    }
+
+    /* Menú flotante: se convierte en panel full */
+    .navbar-container {
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: none;
+        background: var(--negro);
+        padding: 80px 30px 30px;
+        border-radius: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+    .navbar-container.menu-abierto {
+        max-height: 100vh;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .floating-menu {
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+    }
+    .floating-menu ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .floating-menu a {
+        font-size: 1.1rem;
+        padding: 8px 0;
+        display: block;
+    }
+
+    /* Botón hamburguesa: visible en celu */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Hero: título más chico */
+    .hero-content h1 {
+        font-size: 2.2rem;
+        padding: 0 20px;
+    }
+
+    /* Botón del hero */
+    .btn-primary {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+
+        /* PARALLAX — fix para mobile */
+    .parallax-section {
+        background-attachment: fixed; 
+        background-position: center top;
+        min-height: auto;
+    }
+
+    .parallax-overlay {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 60px;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    /* Texto de los párrafos más chico */
+    .adri-text p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    /*EXPERIENCIAS CARD*/
+        .experiencia-card.destacado {
+        transform: translateY(0); /* En celular  quitamos el desplazamiento */
+    }
+
+    /* Hover en celu (para cuando tocan con el dedo) */
+    .experiencia-card:hover,
+    .experiencia-card.destacado:hover {
+        transform: scale(1.02); /* Zoom más chico en celu */
+    }
+    
+    .experiencias-grid {
+        grid-template-columns: 1fr; /* Una tarjeta debajo de la otra */
+    }
+
+    .experiencia-card {
+        padding: 30px;
+        text-align: center;
+    }
+
+    /*EVENTOS GALERIA*/
+    .gallery-item {
+        width: 300px; /* Más angosto en cel */
+        height: 200px; /* Más bajo en cel */
+    }
+
+    /*TIENDA*/
+        .tienda-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        padding: 0 10px;
+        gap: 12px;
+    }
+
+    .producto-img-container {
+        height: 200px; 
+    }
+
+    .producto-info {
+        padding: 12px;
+    }
+
+    .producto-info h2 {
+    font-size: 0.9rem; /* evita que el título se corte */
+    }
+
+    .producto-img-container img {
+        object-position: center ;
+    }
+
+    /*FORMULARIO*/
+     /* Apila texto arriba, form abajo */
+    .contenedor-contacto {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .seccion-contacto {
+        padding: 70px 20px;
+    }
+
+    /* Texto centrado en mobile */
+    .contacto-col-texto {
+        text-align: center;
+        align-items: center;
+    }
+
+    .contacto-sub-word {
+        max-width: 100%;
+    }
+
+    /* Botón enviar centrado y ancho completo */
+    .form-btn-container {
+        justify-content: center;
+    }
+
+    .btn-enviar {
+        width: 100%;
+        padding: 16px;
+    }
+
+    /* Inputs con box-sizing para que no se salgan */
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 992px) {
+    /*INFO RITMO*/
+        .ritmo-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .ritmo-text {
+        order: 1;
+        align-items: center;
+    }
+
+    .ritmo-image {
+        order: 2;
+        width: 80%; /* Se achica un poco en celulares para que se luzca el recorte */
+        margin: 0 auto;
+    }
+
+    .ritmo-image img {
+        aspect-ratio: 1 / 1; /* Mantenemos la forma geométrica en celulares */
+    }
+
+    .btn-primary {
+    display: inline-block; /* Asegura que el tamaño sea acorde al texto */
+    width: auto;           /* Refuerza que no se estire */
+    background-color: var(--blanco);
+    color: var(--negro);
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    white-space: nowrap;  /* Evita que el texto del botón se parta en dos líneas */
+    }
+
+    /*BLOQUE FINAL SECCION4*/
+        .crecimiento-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .crecimiento-stats {
+        align-items: center;
+    }
+    
+    .crecimiento-texto p {
+        margin: 0 auto;
+    }
+
+    /*EVENTOS*/
+    .eventos-wrapper {
+        padding: 0 5%;
+    }
+    
+    .eventos-grid-v2 {
+        grid-template-columns: 1fr; /* Apilados en celular */
+        gap: 40px;
+    }
+
+    .titulo-eventos-overlapped {
+        position: relative; /* Vuelve al flujo normal en celular */
+        top: 0;
+        left: 0;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 3rem;
+    }
+
+    .eventos-content-block {
+        text-align: center;
+    }
+
+    .eventos-cta {
+        justify-content: center; /* Centra el botón en cel */
+    }
+
+    .eventos-bullets {
+        text-align: left;
+        display: inline-block;
+    }
+
+    .eventos-image-block img {
+        height: 350px; /* Altura más baja en celus */
+        clip-path: polygon(90% 0, 100% 50%, 90% 100%, 0% 100%, 15% 50%, 0% 0%);
+    }
 }

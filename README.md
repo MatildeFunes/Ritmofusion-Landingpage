@@ -1,6 +1,6 @@
 # Ritmofusión - Fitness Artístico
 
-**Ritmofusión** es una propuesta de fitness artístico descontracturado en el **Club Mendoza de Regatas**. Esta landing page fue diseñada para transmitir la energía y el movimiento.
+**Ritmofusión** es una propuesta de fitness artístico descontracturado. Esta landing page fue diseñada para transmitir la energía y el movimiento.
 
 ---
 
@@ -10,21 +10,16 @@ Como estudiante de **Ingeniería en Sistemas (UTN)**, enfoqué este desarrollo e
 
 * **HTML5:** Estructura semántica para SEO.
 * **CSS3:** Diseño responsivo utilizando **Flexbox** y **CSS Grid**.
-* **JavaScript (Vanilla):** Interactividad, menú hamburguesa y efectos de scroll.
-* **Google Fonts:** Tipografías modernas (Montserrat y Roboto).
+* **JavaScript (Vanilla):** Interactividad, menú hamburguesa y efectos de galerías.
+* **Google Fonts:** Tipografías moderna Monserrat.
 
 ---
 
 ##  Características Principales
 
 * **Diseño Responsive:** Adaptado para móviles (Bento Grid vertical) y escritorio.
-* **Hero con Video:** Fondo dinámico para captar la atención del usuario.
+* **Sección Parallax:** Fondo dinámico para captar la atención del usuario.
 * **Estética Energética:** Paleta de colores en Negro y Naranja sólido.
-
----
-
-## Galería
-La sección de fotos utiliza una estructura **Bento Grid** que se adapta dinámicamente según el dispositivo, permitiendo visualizar las imágenes en un carrusel en móviles.
 
 ---
 
@@ -32,8 +27,7 @@ La sección de fotos utiliza una estructura **Bento Grid** que se adapta dinámi
 Podés ver la versión en vivo aquí:  
 ritmofusion.netlify.app
 
-
 ---
 
 ##  Autor
-**Matilde Funes** Estudiante de Ingeniería en Sistemas de Información.
+**Matilde Funes** Estudiante de Licenciatura en informática y desarrollo de software.
