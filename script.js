@@ -54,7 +54,7 @@ window.onload = function() {
     const track = document.getElementById('track');
     const items = Array.from(track.children);
     
-    // Clonamos cada tarjeta y la agregamos al final del track
+    
     items.forEach(item => {
         const clone = item.cloneNode(true);
         track.appendChild(clone);

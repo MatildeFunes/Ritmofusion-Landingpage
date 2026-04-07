@@ -96,7 +96,7 @@ body {
     height: 100vh; /* Ocupa toda la pantalla vertical */
     width: 100%;
     
-    /* LA SOLUCIÓN: Degradado negro + Imagen de fondo */
+    
     background-image: 
         linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%), 
         url(Imagenes/fotohero.jpg); 
@@ -178,7 +178,7 @@ body {
     margin-top: 10px;
 }
 
-/* --- LA IMAGEN CON FORMA --- */
+/*  LA IMAGEN CON FORMA */
 .ritmo-image {
     flex: 0.8; 
     display: flex;
@@ -250,7 +250,7 @@ body {
     background-image: url(Imagenes/FB_IMG_1769963054354.jpg); 
     background-attachment: fixed; /* Mantiene el efecto */
     
-    /* LAS SOLUCIONES TÉCNICAS: */
+    
     background-size: cover;      /* Forza a la imagen a cubrir todo el contenedor */
     background-position: center top; 
     overflow: hidden;
@@ -361,7 +361,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*transition: all 0.4s ease;*/
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), /* Un ease-out pro */
                 border-color 0.3s ease, 
                 background-color 0.3s ease,
@@ -447,14 +446,6 @@ body {
     background-color: var(--negro);
     overflow: hidden;
 }
-
-/*.subtitulo-monitores {
-    text-align: center;
-    color: #888;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}*/
 
 .monitores-carousel {
     width: 100%;
@@ -552,10 +543,10 @@ body {
     opacity: 1; /* Aparece la ciudad y el link al pasar el mouse */
 }
 
-/* ANIMACIÓN */
+/* ANIMACIÓN*/
 @keyframes scrollCarousel {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Se desplaza la mitad del track */
+    100% { transform: translateX(-50%); }
 }
 
 /*BLOQUE FINAL SECCIÓN 4 */
@@ -606,7 +597,7 @@ body {
 }
 
 .numero {
-    font-size: clamp(4rem, 8vw, 6rem); /*  */
+    font-size: clamp(4rem, 8vw, 6rem); 
     font-weight: 900;
     color: rgba(255, 255, 255, 0.2); /* Color grisáceo sutil como la foto */
     line-height: 1;
@@ -669,14 +660,11 @@ body {
 
 .eventos-image-block img {
     width: 100%;
-    /*height: 100%;*/
     height: 500px;
     object-fit: cover; /* La foto llena el espacio sin deformarse */
     background-color: #111;
     /*Forma img*/
     clip-path: polygon(83% 0, 100% 50%, 83% 100%, 0% 100%, 25% 50%, 0% 0%);
-    /*clip-path: circle(50% at 50% 50%);*/
-    /*border-radius: 4px; /* Un toque de suavidad elegante */
     -webkit-clip-path: polygon(83% 0, 100% 50%, 83% 100%, 0% 100%, 25% 50%, 0% 0%);
     transition: transform 0.3s ease; /* Pequeño efecto al pasar el mouse */
 }
@@ -735,11 +723,6 @@ body {
     display: flex;
     justify-content: flex-start; /* Alinea el botón a la izquierda */
 }
-
-/* El estilo del .btn-primary ya lo definimos antes, 
-   pero asegurate que tenga padding y width: auto; */
-
-
 
 /* --- SLIDER DE GALERÍA DE EVENTOS --- */
 .eventos-gallery-slider {
@@ -950,9 +933,7 @@ body {
 }
 
 
-/* 
-07 SECCIÓN CONTACTO
- */
+/* 07 SECCIÓN CONTACTO*/
 
 /* Fondo negro sólido y padding vertical para que respire */
 .seccion-contacto {
@@ -1125,7 +1106,7 @@ footer {
     transform: scale(1.1);
 }
 
-/*RESPONSIVE — MOBILE (max 768px)*/
+/*RESPONSIVE — CELULARES/TABLETS*/
 
 /* Botón hamburguesa — oculto en desktop */
 .menu-toggle {
@@ -1167,7 +1148,7 @@ footer {
         top: 16px;
     }
     .nav-logo-link img {
-        height: 90px;
+        height: 120px;
     }
 
     /* Menú flotante: se convierte en panel full */
@@ -1223,6 +1204,11 @@ footer {
         font-size: 0.9rem;
     }
 
+    .btn-primary:hover {
+    background-color: var(--naranja); /*  */
+    color: var(--blanco);
+    }
+
         /* PARALLAX — fix para mobile */
     .parallax-section {
         background-attachment: fixed; 
@@ -1262,6 +1248,31 @@ footer {
     .experiencia-card {
         padding: 30px;
         text-align: center;
+    }
+
+     /* MONITORES */
+    .monitores-carousel {
+        padding: 30px 0;
+    }
+
+    .monitor-card {
+        width: 160px;  /* más angosta para que entren ~2.5 en pantalla */
+        height: 230px; /* proporcional al nuevo ancho */
+        margin: 0 6px;
+    }
+
+    /* En mobile el overlay siempre visible — no hay hover en touch */
+    .overlay-foto {
+        opacity: 1;
+        padding: 15px;
+    }
+
+    .ciudad {
+        font-size: 0.85rem;
+    }
+
+    .ver-mas {
+        font-size: 0.65rem;
     }
 
     /*EVENTOS GALERIA*/
@@ -1331,6 +1342,117 @@ footer {
         box-sizing: border-box;
     }
 }
+
+/*RESPONSIVE — TABLETS e iPads (769px a 1024px)*/
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* MENÚ — achicamos un poco para que entren todos los links */
+    .floating-menu {
+        padding: 10px 20px;
+    }
+
+    .floating-menu ul {
+        gap: 12px;
+    }
+
+    .floating-menu a {
+        font-size: 0.78rem;
+    }
+
+    /* LOGO */
+    .nav-logo-link img {
+        height: 130px;
+    }
+
+    /* HERO */
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    /* INFO RITMO */
+    .ritmo-flex {
+        gap: 40px;
+    }
+
+    .ritmo-parrafos p {
+        font-size: 1rem;
+    }
+
+    /* ADRIÁN PARALLAX */
+    .parallax-overlay {
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+
+    /* EXPERIENCIAS — 2 columnas en tablet */
+    .experiencias-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .experiencia-card.destacado {
+        transform: translateY(0);
+    }
+
+    /* CRECIMIENTO */
+    .crecimiento-grid {
+        gap: 40px;
+    }
+
+    /* EVENTOS */
+    .eventos-grid-v2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .titulo-eventos-overlapped {
+        position: absolute;
+        top: -50px;
+        font-size: 3.5rem;
+    }
+
+    .eventos-image-block img {
+        height: 400px;
+    }
+
+    /* GALERÍA */
+    .gallery-item {
+        width: 350px;
+        height: 240px;
+    }
+
+    /* MONITORES */
+    .monitor-card {
+        width: 200px;
+        height: 280px;
+    }
+
+    /* TIENDA — 2 o 3 columnas según el ancho */
+    .tienda-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .producto-img-container {
+        height: 300px;
+    }
+
+    /* CONTACTO — mantiene 2 columnas pero con menos gap */
+    .contenedor-contacto {
+        gap: 40px;
+    }
+
+    .seccion-contacto {
+        padding: 80px 5%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1366px) {
+    .hero-full {
+        background-position: right center;
+        background-attachment: scroll; /* fix Safari */
+    }
+}
+
 
 @media (max-width: 992px) {
     /*INFO RITMO*/
@@ -1418,5 +1540,303 @@ footer {
     .eventos-image-block img {
         height: 350px; /* Altura más baja en celus */
         clip-path: polygon(90% 0, 100% 50%, 90% 100%, 0% 100%, 15% 50%, 0% 0%);
+    }
+}
+
+/*RESPONSIVE — 480px */
+@media (max-width: 480px) {
+
+    /* HERO */
+    .hero-content h1 {
+        font-size: 1.9rem;
+    }
+
+    /* INFO RITMO */
+    .info-section {
+        padding: 60px 5%;
+    }
+
+    .ritmo-image {
+        width: 100%;
+    }
+
+    .titulo-seccion {
+        font-size: 2rem;
+    }
+
+    /* MARQUEE */
+    .marquee span {
+        font-size: 1.4rem;
+        padding-right: 30px;
+    }
+
+    /* ADRIÁN PARALLAX */
+    .parallax-overlay {
+        padding-top: 60px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .adri-text p {
+        font-size: 0.95rem;
+    }
+
+    /* EXPERIENCIAS */
+    .experiencias-section {
+        padding: 60px 4%;
+    }
+
+    .experiencia-card {
+        padding: 25px 20px;
+    }
+
+    .experiencia-card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* BLOQUE CRECIMIENTO */
+    .crecimiento-ritmo {
+        padding: 60px 5%;
+    }
+
+    .numero {
+        font-size: 4rem;
+    }
+
+    /* EVENTOS */
+    .eventos-section-v2 {
+        padding: 70px 0;
+    }
+
+    .titulo-eventos-overlapped {
+        font-size: 2.2rem;
+        letter-spacing: -1px;
+    }
+
+    .eventos-image-block img {
+        height: 260px;
+        /* clip-path: none;  
+        -webkit-clip-path: none;*/
+    }
+
+    .eventos-descripcion p {
+        font-size: 1rem;
+    }
+
+    /* GALERÍA SLIDER */
+    .gallery-item {
+        width: 240px;
+        height: 160px;
+    }
+
+    /* MONITORES */
+    .monitores-carousel {
+        padding: 20px 0;
+    }
+
+    .monitor-card {
+        width: 150px;
+        height: 210px;
+        margin: 0 6px;
+    }
+
+    /* TIENDA */
+    .tienda-section {
+        padding: 60px 4%;
+    }
+
+    .producto-img-container {
+        height: 180px;
+    }
+
+    .producto-info {
+        padding: 10px;
+    }
+
+    .producto-info h3 {
+        font-size: 0.8rem;
+        letter-spacing: 0;
+    }
+
+    .producto-info p {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+
+    .btn-tienda {
+        padding: 10px 20px;
+        font-size: 0.7rem;
+    }
+
+    /* CONTACTO */
+    .seccion-contacto {
+        padding: 60px 16px;
+    }
+
+    .lema-final {
+        letter-spacing: -1px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 14px 16px;
+        font-size: 0.9rem;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 1.5rem 1rem;
+    }
+}
+
+
+/*RESPONSIVE — 360px */
+@media (max-width: 360px) {
+
+    /* HERO */
+    .hero-content h1 {
+        font-size: 1.6rem;
+        padding: 0 14px;
+    }
+
+    .btn-primary {
+        padding: 11px 20px;
+        font-size: 0.8rem;
+    }
+
+    /* MENÚ */
+    .floating-menu a {
+        font-size: 1rem;
+    }
+
+    /* INFO RITMO */
+    .titulo-seccion {
+        font-size: 1.7rem;
+    }
+
+    .ritmo-parrafos p {
+        font-size: 1rem;
+    }
+
+    /* MARQUEE */
+    .marquee span {
+        font-size: 1.1rem;
+    }
+
+    /* ADRIÁN */
+    .adri-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .adri-text p {
+        font-size: 0.9rem;
+    }
+
+    /* EXPERIENCIAS */
+    .experiencias-section {
+        padding: 50px 3%;
+    }
+
+    .experiencia-card {
+        padding: 20px 16px;
+    }
+
+    .card-num {
+        font-size: 2rem;
+    }
+
+    /* CRECIMIENTO */
+    .numero {
+        font-size: 3.2rem;
+        letter-spacing: -1px;
+    }
+
+    .etiqueta {
+        font-size: 0.85rem;
+    }
+
+    /* EVENTOS */
+    .titulo-eventos-overlapped {
+        font-size: 1.8rem;
+    }
+
+    .eventos-descripcion p {
+        font-size: 0.9rem;
+    }
+
+    .eventos-bullets li {
+        font-size: 0.8rem;
+    }
+
+    /* GALERÍA SLIDER */
+    .gallery-item {
+        width: 200px;
+        height: 140px;
+    }
+
+    /* MONITORES */
+    .monitor-card {
+        width: 130px;
+        height: 185px;
+        margin: 0 5px;
+    }
+
+    .ciudad {
+        font-size: 0.75rem;
+    }
+
+    /* TIENDA — vuelve a 1 columna en pantallas muy chicas */
+    .tienda-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .producto-img-container {
+        height: 240px; /* más alto porque ahora ocupa todo el ancho */
+    }
+
+    .producto-info {
+        padding: 16px;
+    }
+
+    /* CONTACTO */
+    .seccion-contacto {
+        padding: 50px 12px;
+    }
+
+    .lema-final {
+        font-size: 1.7rem;
+        letter-spacing: -1px;
+    }
+
+    .separador-naranja {
+        width: 100px;
+    }
+
+    .contacto-sub-word {
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 12px 14px;
+        font-size: 0.85rem;
+    }
+
+    .btn-enviar {
+        font-size: 0.8rem;
+        padding: 14px;
+    }
+}
+
+@media (min-width: 390px) and (max-width: 430px) {
+    .tienda-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas caben bien en estos iPhones */
+    }
+
+    .producto-img-container {
+        height: 210px;
     }
 }

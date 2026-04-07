@@ -1,4 +1,4 @@
-# Ritmofusión - Fitness Artístico
+# Ritmofusión - Sport Dance
 
 **Ritmofusión** es una propuesta de fitness artístico descontracturado. Esta landing page fue diseñada para transmitir la energía y el movimiento.
 
