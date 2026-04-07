@@ -190,6 +190,7 @@ body {
     height: auto;
     aspect-ratio: 1 / 1; 
     object-fit: cover;
+    object-position: left;
     
     /* PATH PERSONALIZADO */
     clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
@@ -1077,8 +1078,6 @@ body {
     transform: translateY(-2px);
 }
 
-
-
 /* --- Footer --- */
 footer {
     padding: 2rem 1rem;
@@ -1475,6 +1474,10 @@ footer {
 
     .ritmo-image img {
         aspect-ratio: 1 / 1; /* Mantenemos la forma geométrica en celulares */
+        /*PATH NUEVO*/
+        clip-path: polygon(50% 0%, 100% 38%, 100% 90%, 0% 90%, 0% 38%);
+        object-fit: cover;
+        object-position: left;
     }
 
     .btn-primary {
